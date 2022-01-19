@@ -50,32 +50,12 @@ app.use(mongoSanitize({
 }))
 const secret = process.env.SECRET || 'thisshouldbeabettersecret!';
 
-/* const store = MongoDBStore.create({ 
-    url: dbUrl,
-    secret: 'thisshouldbeabettersecret!',
-    touchAfter: 24 * 60 * 60
- }); */
-
-
-/* const store = MongoDBStore.create({
-    url: dbUrl,
-    secret,
-    touchAfter: 24 * 60 * 60
-}); */
-
 const sessionConfig = {
-    store: MongoDBStore.create({
-        mongoUrl: dbUrl,
-        secret,
-        touchAfter: 24 * 60 * 60
-    }),
-    name: 'session',
-    secret,
+    secret: 'thisshouldbeabettersecret!',
     resave: false,
     saveUninitialized: true,
     cookie: {
         httpOnly: true,
-        // secure: true,
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
